@@ -47,7 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="BarbecueRepository.cs" />
+    <Compile Include="BaseRepository.cs" />
+    <Compile Include="Entities\Barbecue.cs" />
+    <Compile Include="ChurrasTrincaContext.cs" />
+    <Compile Include="Interfaces\IBarbecueRepository.cs" />
+    <Compile Include="Interfaces\IParticipantRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Entities\Participant.cs" />
+    <Compile Include="ParticipantRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
