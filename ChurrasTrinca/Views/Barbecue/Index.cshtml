@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ChurrasTrinca.Models.BarbecueModel>
+
+@{
+    ViewBag.Title = "Listagem de Churras";
+}
+
+<h2>Os churras da Trinca</h2>
+
+@using (Html.BeginForm("Create", "Barbecue", FormMethod.Get))
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                Participantes
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCollected)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Participants.Count)
+                </td>
+                <td>
+                    R$ @Html.DisplayFor(modelItem => item.TotalCollected)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.BarbecueID }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.BarbecueID }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.BarbecueID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div style="float: right">
+        <input type="submit" value="+ Adicionar Churras" class="btn btn-default" />
+    </div>
+}
