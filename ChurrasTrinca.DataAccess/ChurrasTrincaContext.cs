@@ -12,11 +12,10 @@ namespace ChurrasTrinca.DataAccess
     public class ChurrasTrincaContext : DbContext
     {
         public ChurrasTrincaContext()
-            : base("ChurrasTrincaDBConnString")
         {
-
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<ChurrasTrincaContext, ChurrasTrinca.DataAccess.Migrations.Configuration>("ChurrasTrincaContext"));
         }
-
+        
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Barbecue> Barbecues { get; set; }
 
