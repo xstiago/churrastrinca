@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="BarbecueDomain.cs" />
     <Compile Include="Contracts\IBarbecueDomain.cs" />
+    <Compile Include="Contracts\IParticipantDomain.cs" />
+    <Compile Include="ParticipantDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

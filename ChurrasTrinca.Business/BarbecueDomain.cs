@@ -31,9 +31,9 @@ namespace ChurrasTrinca.Business
 
         public void Save(Barbecue barbercue)
         {
-            var barbecue = this.GetById(barbercue.BarbecueID);
+            var barbecueGet = this.GetById(barbercue.BarbecueID);
 
-            if (barbercue == null)
+            if (barbecueGet == null)
             {
                 _barbecueRepository.Add(barbercue);
             }

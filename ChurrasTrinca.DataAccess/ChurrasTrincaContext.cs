@@ -1,6 +1,7 @@
 ﻿using ChurrasTrinca.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
@@ -34,6 +35,14 @@ namespace ChurrasTrinca.DataAccess
             modelBuilder.Entity<Barbecue>()
                 .Property(p => p.WithoutDrink)
                 .HasPrecision(5, 2);
+
+            modelBuilder.Entity<Participant>()
+            .Property(f => f.ParticipantID)
+            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<Barbecue>()
+            .Property(f => f.BarbecueID)
+            .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
         }
     }
 }

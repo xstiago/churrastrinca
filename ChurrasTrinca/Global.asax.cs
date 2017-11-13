@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ChurrasTrinca.Entities;
+﻿using ChurrasTrinca.Entities;
 using ChurrasTrinca.Models;
 using System;
 using System.Collections.Generic;
@@ -19,11 +18,6 @@ namespace ChurrasTrinca
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<BarbecueModel, Barbecue>();
-                cfg.CreateMap<ParticipantModel, Participant>();
-            });
         }
     }
 }

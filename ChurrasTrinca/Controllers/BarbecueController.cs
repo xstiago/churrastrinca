@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using ChurrasTrinca.Business.Contracts;
+﻿using ChurrasTrinca.Business.Contracts;
 using ChurrasTrinca.Entities;
 using ChurrasTrinca.Models;
 using System;
@@ -24,7 +23,17 @@ namespace ChurrasTrinca.Controllers
         public ActionResult Index()
         {
             var allBarbecues = _barbecueDomain.Get()
-                .OrderBy(o => o.Date);
+                .OrderBy(o => o.Date)
+                .Select(o => new BarbecueModel()
+                {
+                    BarbecueID = o.BarbecueID,
+                    Comments = o.Comments,
+                    Date = o.Date,
+                    Description = o.Description,
+                    TotalCollected = o.TotalCollected,
+                    WithDrink = o.WithDrink,
+                    WithoutDrink = o.WithoutDrink
+                });
 
             return View(allBarbecues);
         }
@@ -34,7 +43,18 @@ namespace ChurrasTrinca.Controllers
         public ActionResult Details(int id)
         {
             var barbecue = _barbecueDomain.GetById(id);
-            return View(new BarbecueModel());
+            var barbecueModel = new BarbecueModel()
+            {
+                BarbecueID = barbecue.BarbecueID,
+                Comments = barbecue.Comments,
+                Date = barbecue.Date,
+                Description = barbecue.Description,
+                TotalCollected = barbecue.TotalCollected,
+                WithDrink = barbecue.WithDrink,
+                WithoutDrink = barbecue.WithoutDrink
+            };
+
+            return View(barbecueModel);
         }
 
         //
@@ -51,7 +71,15 @@ namespace ChurrasTrinca.Controllers
         {
             try
             {
-                var barcecue = Mapper.Map<Barbecue>(barbecueModel);
+                var barcecue = new Barbecue()
+                {
+                    Comments = barbecueModel.Comments,
+                    Date = barbecueModel.Date,
+                    Description = barbecueModel.Description,
+                    TotalCollected = 0,
+                    WithDrink = barbecueModel.WithDrink,
+                    WithoutDrink = barbecueModel.WithoutDrink
+                };
 
                 _barbecueDomain.Save(barcecue);
 
@@ -67,8 +95,19 @@ namespace ChurrasTrinca.Controllers
         // GET: /Barbecue/Edit/5
         public ActionResult Edit(int id)
         {
-            var barcecue = _barbecueDomain.GetById(id);
-            return View(barcecue);
+            var barbecue = _barbecueDomain.GetById(id);
+            var barbecueModel = new BarbecueModel()
+            {
+                BarbecueID = barbecue.BarbecueID,
+                Comments = barbecue.Comments,
+                Date = barbecue.Date,
+                Description = barbecue.Description,
+                TotalCollected = barbecue.TotalCollected,
+                WithDrink = barbecue.WithDrink,
+                WithoutDrink = barbecue.WithoutDrink
+            };
+
+            return View(barbecueModel);
         }
 
         //
@@ -78,7 +117,7 @@ namespace ChurrasTrinca.Controllers
         {
             try
             {
-                var barcecue = Mapper.Map<Barbecue>(barbecueModel);
+                var barcecue = new Barbecue();
 
                 _barbecueDomain.Save(barcecue);
 
