@@ -39,12 +39,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarbecueDomain.cs" />
+    <Compile Include="Contracts\IBarbecueDomain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChurrasTrinca.DataAccess\ChurrasTrinca.DataAccess.csproj">
       <Project>{12d9fd8b-d7ec-455a-9eeb-0f4a9a3c9fc1}</Project>
       <Name>ChurrasTrinca.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChurrasTrinca.Entities\ChurrasTrinca.Entities.csproj">
+      <Project>{57a547ea-4e33-44c6-bedd-68bf3d53c6df}</Project>
+      <Name>ChurrasTrinca.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,11 +1,6 @@
-﻿using ChurrasTrinca.DataAccess.Entities;
-using ChurrasTrinca.DataAccess.Interfaces;
-using System;
-using System.Collections.Generic;
+﻿using ChurrasTrinca.DataAccess.Contracts;
+using ChurrasTrinca.Entities;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChurrasTrinca.DataAccess
 {

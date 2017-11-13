@@ -1,4 +1,4 @@
-﻿using ChurrasTrinca.DataAccess.Entities;
+﻿using ChurrasTrinca.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;

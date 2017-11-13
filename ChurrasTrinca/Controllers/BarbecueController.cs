@@ -1,4 +1,7 @@
-﻿using ChurrasTrinca.Models;
+﻿using AutoMapper;
+using ChurrasTrinca.Business.Contracts;
+using ChurrasTrinca.Entities;
+using ChurrasTrinca.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +12,28 @@ namespace ChurrasTrinca.Controllers
 {
     public class BarbecueController : Controller
     {
+        private IBarbecueDomain _barbecueDomain;
+
+        public BarbecueController(IBarbecueDomain barbecueDomain)
+        {
+            _barbecueDomain = barbecueDomain;
+        }
+
         //
         // GET: /Barbecue/
         public ActionResult Index()
         {
-            return View(new List<BarbecueModel>());
+            var allBarbecues = _barbecueDomain.Get()
+                .OrderBy(o => o.Date);
+
+            return View(allBarbecues);
         }
 
         //
         // GET: /Barbecue/Details/5
         public ActionResult Details(int id)
         {
+            var barbecue = _barbecueDomain.GetById(id);
             return View(new BarbecueModel());
         }
 
@@ -33,11 +47,13 @@ namespace ChurrasTrinca.Controllers
         //
         // POST: /Barbecue/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(BarbecueModel barbecueModel)
         {
             try
             {
-                // TODO: Add insert logic here
+                var barcecue = Mapper.Map<Barbecue>(barbecueModel);
+
+                _barbecueDomain.Save(barcecue);
 
                 return RedirectToAction("Index");
             }
@@ -51,17 +67,20 @@ namespace ChurrasTrinca.Controllers
         // GET: /Barbecue/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var barcecue = _barbecueDomain.GetById(id);
+            return View(barcecue);
         }
 
         //
         // POST: /Barbecue/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, BarbecueModel barbecueModel)
         {
             try
             {
-                // TODO: Add update logic here
+                var barcecue = Mapper.Map<Barbecue>(barbecueModel);
+
+                _barbecueDomain.Save(barcecue);
 
                 return RedirectToAction("Index");
             }

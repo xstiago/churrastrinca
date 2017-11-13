@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -39,10 +40,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.0\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -283,6 +288,10 @@
     <ProjectReference Include="..\ChurrasTrinca.Business\ChurrasTrinca.Business.csproj">
       <Project>{c5008c83-ff33-4acd-84bc-ed4f9f8ce072}</Project>
       <Name>ChurrasTrinca.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ChurrasTrinca.Entities\ChurrasTrinca.Entities.csproj">
+      <Project>{57a547ea-4e33-44c6-bedd-68bf3d53c6df}</Project>
+      <Name>ChurrasTrinca.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

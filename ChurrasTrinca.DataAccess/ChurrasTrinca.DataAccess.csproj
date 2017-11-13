@@ -50,12 +50,10 @@
     <Compile Include="BarbecueRepository.cs" />
     <Compile Include="BaseRepository.cs" />
     <Compile Include="ChurrasTrincaDBInitializer.cs" />
-    <Compile Include="Entities\Barbecue.cs" />
     <Compile Include="ChurrasTrincaContext.cs" />
-    <Compile Include="Interfaces\IBarbecueRepository.cs" />
-    <Compile Include="Interfaces\IParticipantRepository.cs" />
-    <Compile Include="Interfaces\IRepository.cs" />
-    <Compile Include="Entities\Participant.cs" />
+    <Compile Include="Contracts\IBarbecueRepository.cs" />
+    <Compile Include="Contracts\IParticipantRepository.cs" />
+    <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Migrations\201709191238248_Initializer.cs" />
     <Compile Include="Migrations\201709191238248_Initializer.Designer.cs">
       <DependentUpon>201709191238248_Initializer.cs</DependentUpon>
@@ -72,6 +70,12 @@
     <EmbeddedResource Include="Migrations\201709191238248_Initializer.resx">
       <DependentUpon>201709191238248_Initializer.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChurrasTrinca.Entities\ChurrasTrinca.Entities.csproj">
+      <Project>{57a547ea-4e33-44c6-bedd-68bf3d53c6df}</Project>
+      <Name>ChurrasTrinca.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
