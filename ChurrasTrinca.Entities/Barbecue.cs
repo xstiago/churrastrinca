@@ -19,15 +19,17 @@ namespace ChurrasTrinca.Entities
         [MaxLength(500)]
         public string Comments { get; set; }
 
-        [NotMapped]
-        public decimal TotalCollected { get; set; }
-
         [Required]
         public decimal WithDrink { get; set; }
 
         [Required]
         public decimal WithoutDrink { get; set; }
 
-        public ICollection<Participant> Participants { get; set; }
+        public virtual ICollection<Participant> Participants { get; set; }
+
+        public Barbecue()
+        {
+            this.Participants = new HashSet<Participant>();
+        }
     }
 }

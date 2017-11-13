@@ -21,12 +21,14 @@
             </dd>
 
             <dt>
-                @Html.DisplayNameFor(model => model.Comments)
+                
             </dt>
 
             <dd>
                 @Html.DisplayFor(model => model.Comments)
             </dd>
+
+            Quantos Pila?
 
             <dt>
                 @Html.DisplayNameFor(model => model.WithDrink)
@@ -39,17 +41,25 @@
             <dt>
                 @Html.DisplayNameFor(model => model.WithoutDrink)
             </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.WithoutDrink)
+            </dd>
         </dl>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Visualizar Participantes" class="btn btn-default" />
+                <input type="submit" value="Adicionar Participante" class="btn btn-default" />
             </div>
         </div>
 
         <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ParticipantsNumber)
+            </dt>
+
             <dd>
-                @Html.DisplayFor(model => model.WithoutDrink)
+                @Html.DisplayFor(model => model.ParticipantsNumber)
             </dd>
 
             <dt>
@@ -57,13 +67,37 @@
             </dt>
 
             <dd>
-                @Html.DisplayFor(model => model.TotalCollected)
+                R$ @Html.DisplayFor(model => model.TotalCollected)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AmountAlreadyPaid)
+            </dt>
+
+            <dd>
+                R$ @Html.DisplayFor(model => model.AmountAlreadyPaid)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalDrunker)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalDrunker)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalNotDrunker)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalNotDrunker)
             </dd>
 
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Alterar", "Edit", new { id = Model.BarbecueID }) |
+        @*@Html.ActionLink("Alterar", "Edit", new { id = Model.BarbecueID }) |*@
         @Html.ActionLink("Voltar a listagem", "Index")
     </p>
 }

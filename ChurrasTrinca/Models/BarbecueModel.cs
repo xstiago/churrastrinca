@@ -31,6 +31,18 @@ namespace ChurrasTrinca.Models
         [Display(Name = "Valor sem Bebida")]
         public decimal WithoutDrink { get; set; }
 
+        [Display(Name = "Número de participantes")]
+        public int ParticipantsNumber { get; set; }
+
+        [Display(Name = "Valor já pago")]
+        public decimal AmountAlreadyPaid { get; set; }
+
+        [Display(Name = "Total de bebuns")]
+        public int TotalDrunker { get; set; }
+
+        [Display(Name = "Total de saudáveis")]
+        public int TotalNotDrunker { get; set; }
+
         public ICollection<ParticipantModel> Participants { get; set; }
 
         public BarbecueModel()

@@ -16,7 +16,7 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Date, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Date, "Quando?", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Date, new { @class = "date-picker" })
                 @Html.ValidationMessageFor(model => model.Date)
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, "Porquê?", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Description)
                 @Html.ValidationMessageFor(model => model.Description)
@@ -32,7 +32,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Comments, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Comments, "Obs", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Comments)
                 @Html.ValidationMessageFor(model => model.Comments)
@@ -40,26 +40,21 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.TotalCollected, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TotalCollected)
-                @Html.ValidationMessageFor(model => model.TotalCollected)
+            <label>Valor de contribuição sugerido:</label>
+            <div class="form-group">
+                @Html.LabelFor(model => model.WithDrink, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WithDrink)
+                    @Html.ValidationMessageFor(model => model.WithDrink)
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.WithDrink, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WithDrink)
-                @Html.ValidationMessageFor(model => model.WithDrink)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WithoutDrink, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WithoutDrink)
-                @Html.ValidationMessageFor(model => model.WithoutDrink)
+            <div class="form-group">
+                @Html.LabelFor(model => model.WithoutDrink, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.WithoutDrink)
+                    @Html.ValidationMessageFor(model => model.WithoutDrink)
+                </div>
             </div>
         </div>
 

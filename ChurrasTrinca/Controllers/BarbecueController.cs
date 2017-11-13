@@ -30,7 +30,7 @@ namespace ChurrasTrinca.Controllers
                     Comments = o.Comments,
                     Date = o.Date,
                     Description = o.Description,
-                    TotalCollected = o.TotalCollected,
+                    TotalCollected = o.Participants.Sum(part => part.ContributionValue),
                     WithDrink = o.WithDrink,
                     WithoutDrink = o.WithoutDrink
                 });
@@ -49,9 +49,22 @@ namespace ChurrasTrinca.Controllers
                 Comments = barbecue.Comments,
                 Date = barbecue.Date,
                 Description = barbecue.Description,
-                TotalCollected = barbecue.TotalCollected,
+                TotalCollected = barbecue.Participants.Sum(part => part.ContributionValue),
                 WithDrink = barbecue.WithDrink,
-                WithoutDrink = barbecue.WithoutDrink
+                WithoutDrink = barbecue.WithoutDrink,
+                AmountAlreadyPaid = barbecue.Participants.Sum(part => part.ContributionValue),
+                TotalDrunker = barbecue.Participants.Where(part => part.WithDrink).Count(),
+                TotalNotDrunker = barbecue.Participants.Where(part => part.WithDrink).Count(),
+                ParticipantsNumber = barbecue.Participants.Count(),
+                Participants = barbecue.Participants.Select(o => new ParticipantModel()
+                {
+                    Comments = o.Comments,
+                    ContributionValue = o.ContributionValue,
+                    IsPaid = o.IsPaid,
+                    Name = o.Name,
+                    ParticipantID = o.ParticipantID,
+                    WithDrink = o.WithDrink
+                }).ToList()
             };
 
             return View(barbecueModel);
@@ -76,7 +89,6 @@ namespace ChurrasTrinca.Controllers
                     Comments = barbecueModel.Comments,
                     Date = barbecueModel.Date,
                     Description = barbecueModel.Description,
-                    TotalCollected = 0,
                     WithDrink = barbecueModel.WithDrink,
                     WithoutDrink = barbecueModel.WithoutDrink
                 };
@@ -91,66 +103,5 @@ namespace ChurrasTrinca.Controllers
             }
         }
 
-        //
-        // GET: /Barbecue/Edit/5
-        public ActionResult Edit(int id)
-        {
-            var barbecue = _barbecueDomain.GetById(id);
-            var barbecueModel = new BarbecueModel()
-            {
-                BarbecueID = barbecue.BarbecueID,
-                Comments = barbecue.Comments,
-                Date = barbecue.Date,
-                Description = barbecue.Description,
-                TotalCollected = barbecue.TotalCollected,
-                WithDrink = barbecue.WithDrink,
-                WithoutDrink = barbecue.WithoutDrink
-            };
-
-            return View(barbecueModel);
-        }
-
-        //
-        // POST: /Barbecue/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, BarbecueModel barbecueModel)
-        {
-            try
-            {
-                var barcecue = new Barbecue();
-
-                _barbecueDomain.Save(barcecue);
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        //
-        // GET: /Barbecue/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        //
-        // POST: /Barbecue/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
