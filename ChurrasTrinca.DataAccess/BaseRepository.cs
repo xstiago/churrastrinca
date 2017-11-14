@@ -24,12 +24,16 @@ namespace ChurrasTrinca.DataAccess
         {
             _dbContext.Set<TEntity>().Remove(entity);
             _dbContext.SaveChanges();
+
+            _dbContext.Entry(entity).Reload();
         }
 
         public void Add(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
             _dbContext.SaveChanges();
+
+            _dbContext.Entry(entity).Reload();
         }
 
         public void Dispose()

@@ -17,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
-                Participantes
+                @Html.DisplayNameFor(model => model.TotalParticipants)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TotalCollected)
@@ -35,14 +35,14 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Participants.Count)
+                    @Html.DisplayFor(modelItem => item.TotalParticipants)
                 </td>
                 <td>
                     R$ @Html.DisplayFor(modelItem => item.TotalCollected)
                 </td>
                 <td>
                     @*@Html.ActionLink("Editar", "Edit", new { id = item.BarbecueID }) |*@
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.BarbecueID }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.BarbecueID }) @*|*@
                     @*@Html.ActionLink("Excluir", "Delete", new { id = item.BarbecueID })*@
                 </td>
             </tr>

@@ -6,7 +6,7 @@
 
 <h2>@Html.DisplayFor(model => model.Description)</h2>
 
-@using (Html.BeginForm("Index", "Participant", FormMethod.Get))
+@using (Html.BeginForm("Create", "Participant", FormMethod.Get))
 {
     <div>
         <hr />
@@ -28,7 +28,8 @@
                 @Html.DisplayFor(model => model.Comments)
             </dd>
 
-            Quantos Pila?
+            <dt>Quantos Pila?</dt>
+            <dd></dd>
 
             <dt>
                 @Html.DisplayNameFor(model => model.WithDrink)
@@ -98,6 +99,6 @@
     </div>
     <p>
         @*@Html.ActionLink("Alterar", "Edit", new { id = Model.BarbecueID }) |*@
-        @Html.ActionLink("Voltar a listagem", "Index")
+        @Html.ActionLink("Voltar a listagem", "Index", "Barbecue")
     </p>
 }

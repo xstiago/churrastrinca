@@ -10,6 +10,7 @@ namespace ChurrasTrinca.DataAccess.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ChurrasTrinca.DataAccess.ChurrasTrincaContext context)

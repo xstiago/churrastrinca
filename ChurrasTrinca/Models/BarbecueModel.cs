@@ -43,6 +43,9 @@ namespace ChurrasTrinca.Models
         [Display(Name = "Total de saudáveis")]
         public int TotalNotDrunker { get; set; }
 
+        [Display(Name = "Participantes")]
+        public int TotalParticipants { get; set; }
+
         public ICollection<ParticipantModel> Participants { get; set; }
 
         public BarbecueModel()

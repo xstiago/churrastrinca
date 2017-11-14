@@ -32,7 +32,8 @@ namespace ChurrasTrinca.Controllers
                     Description = o.Description,
                     TotalCollected = o.Participants.Sum(part => part.ContributionValue),
                     WithDrink = o.WithDrink,
-                    WithoutDrink = o.WithoutDrink
+                    WithoutDrink = o.WithoutDrink,
+                    TotalParticipants = o.Participants.Count
                 });
 
             return View(allBarbecues);
@@ -66,6 +67,8 @@ namespace ChurrasTrinca.Controllers
                     WithDrink = o.WithDrink
                 }).ToList()
             };
+
+            TempData["BarbecueId"] = barbecue.BarbecueID;
 
             return View(barbecueModel);
         }

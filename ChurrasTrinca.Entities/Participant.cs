@@ -21,5 +21,10 @@ namespace ChurrasTrinca.Entities
 
         [MaxLength(200)]
         public string Comments { get; set; }
+
+        [Required]
+        public int BarbecueID { get; set; }
+        
+        public Barbecue Barbecue { get; set; }
     }
 }
